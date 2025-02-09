@@ -32,10 +32,12 @@
         require([
             "esri/config", 
             "esri/Map", 
-            "esri/views/MapView" ], 
+            "esri/views/MapView",
+            "esri/widgets/Locate",
+            "esri/widgets/Search" ], 
 
             //adding the api key
-            (esriConfig, Map, MapView) => {
+            (esriConfig, Map, MapView, Locate, Search) => {
         
             esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurA_2jA8sPPf_DuV7jRLl5PwtnXSU0EiBd11SD4M-Bxw0VmUMSuKZ3u7X93rd5OfBB2Ag01k9uo6Xfpqi_R063eJW1i_6ohZfdruULZjkwoYgBNBVYWQJBk9wXaW3x6gFt492QOLB64S3mV2-lTAYIfIU44s596OX2AzOUD_ifvIEnZBN5fgtT-e_ZshyDxKXZuo5QyM72UporXXrZgrtdWpAGUtr7ArIbiU9l_IukgJEAT1_QnQ7dl2M";
 
@@ -48,6 +50,25 @@
                     map: map, // References the map object
                     center: [-100.80500, 34.02700], // Longitude, latitude
                     zoom: 2 // Zoom level
+            });
+
+            const locateBtn = new Locate({
+                view: view
+        });
+
+            // Add the locate widget to the top left corner of the view
+            view.ui.add(locateBtn, {
+                position: "top-left"
+        });
+
+
+            // Create and add the search widget to the top right corner of the view
+            var searchWidget = new Search({
+                view: view
+            });
+
+            view.ui.add(searchWidget, {
+                position: "top-right"
             });
 
         });
