@@ -2,10 +2,58 @@
 <!DOCTYPE html>
  <html>
   <head>
+
+
+    <!--meta for the browser to allow for mobile first design-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
    <title>Data Collector for AGOL</title>
+
+   <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            }
+   </style>
+
+
+  <!--Importing css and libraries for esri.js--> 
+   <link rel="stylesheet" href="https://js.arcgis.com/4.26/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.26/"></script>
+
+    <script>
+
+        // loading the modules
+        require([
+        "esri/config", 
+        "esri/Map", 
+        "esri/views/MapView" ], 
+
+        //adding the api key
+        (esryConfig, Map, MapView) => {
+        
+            esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurA_2jA8sPPf_DuV7jRLl5PwtnXSU0EiBd11SD4M-Bxw0VmUMSuKZ3u7X93rd5OfBB2Ag01k9uo6Xfpqi_R063eJW1i_6ohZfdruULZjkwoYgBNBVYWQJBk9wXaW3x6gFt492QOLB64S3mV2-lTAYIfIU44s596OX2AzOUD_ifvIEnZBN5fgtT-e_ZshyDxKXZuo5QyM72UporXXrZgrtdWpAGUtr7ArIbiU9l_IukgJEAT1_QnQ7dl2M";
+
+            const map = new Map({
+                basemap: "satellite"
+            });
+
+            const view = new MapView({
+                container: "viewDiv", // Reference to the DOM node that will contain the view
+                    map: map // References the map object
+            });
+
+        });
+        </script>
+
   </head>
   <body>
    <!-- hello world text to check if everything worked -->
-   <h1>Hello World! I am ready to collect data.</h1>
+   <div id="viewDiv"></div>
   </body>
 </html>
