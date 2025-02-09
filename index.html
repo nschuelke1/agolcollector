@@ -52,6 +52,7 @@
                     zoom: 2 // Zoom level
             });
 
+            // create the loacte button
             const locateBtn = new Locate({
                 view: view
         });
@@ -62,11 +63,12 @@
         });
 
 
-            // Create and add the search widget to the top right corner of the view
-            var searchWidget = new Search({
+            // Create a search widget
+            const searchWidget = new Search({
                 view: view
             });
 
+            // add search widget
             view.ui.add(searchWidget, {
                 position: "top-right"
             });
