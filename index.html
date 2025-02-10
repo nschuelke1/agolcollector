@@ -34,10 +34,11 @@
             "esri/Map", 
             "esri/views/MapView",
             "esri/widgets/Locate",
-            "esri/widgets/Search" ], 
+            "esri/widgets/Search",
+            "esri/layers/FeatureLayer" ], 
 
             //adding the api key
-            (esriConfig, Map, MapView, Locate, Search) => {
+            (esriConfig, Map, MapView, Locate, Search, FeatureLayer) => {
         
             esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurA_2jA8sPPf_DuV7jRLl5PwtnXSU0EiBd11SD4M-Bxw0VmUMSuKZ3u7X93rd5OfBB2Ag01k9uo6Xfpqi_R063eJW1i_6ohZfdruULZjkwoYgBNBVYWQJBk9wXaW3x6gFt492QOLB64S3mV2-lTAYIfIU44s596OX2AzOUD_ifvIEnZBN5fgtT-e_ZshyDxKXZuo5QyM72UporXXrZgrtdWpAGUtr7ArIbiU9l_IukgJEAT1_QnQ7dl2M";
 
@@ -72,6 +73,15 @@
             view.ui.add(searchWidget, {
                 position: "top-right"
             });
+
+            // Create featurelayer from feature service 
+            const layer = new FeatureLayer({ 
+            // URL to the service 
+                url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_0120cd9bb090471d9e437f893c397fda_results/FeatureServer" 
+            });
+
+            // add feature layer to map
+            map.add(layer);
 
         });
         </script>
